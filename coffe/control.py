@@ -200,7 +200,7 @@ def addProductPage():
                 return redirect(url_for('marketPage'))
             else:
                 flash("Please select an image for your item ","danger")
-        return render_template('addProduct.html',addItemForm = addProForm)
+        return render_template('addProduct.html',addItemForm = addProForm,depositForm = depositForm)
 
 
     if request.method == "GET":
