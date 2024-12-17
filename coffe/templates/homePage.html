@@ -1,0 +1,28 @@
+{% extends "display.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block style_link %}
+<link rel="stylesheet" href="{{url_for('static' , filename='home.css')}}">
+{% endblock %}
+
+{% block main %}
+<div class="home-start-content">
+    <div class="home-content">
+        <h1>Welcome to the my project</h1>
+        <div class="high-light">
+            e-conmmerce
+        </div>
+        <p>
+            This is a web application where sale and purchase of goods can be made online, with all transactions being
+            handled
+            securely through an encrypted connection
+        </p>
+        <a href="{{ url_for('shopPage')}}" class="start-btn">
+            start now
+        </a>
+    </div>
+</div>
+{% endblock %}

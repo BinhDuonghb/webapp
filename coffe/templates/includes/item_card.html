@@ -1,0 +1,28 @@
+<div class="product-card">
+    <div class="left-product-card">
+        {% set item_image = itemImage.query.filter_by(item_id=item.id).first() %}
+        {% if item_image and item_image.img %}
+        <img src="data:{{ item_image.mimetype }};charset=utf-8;base64,{{ item_image.b64img() }}" alt="product_img">
+        {% else %}
+        <img src="{{ url_for('static', filename='image/no_image.png') }}" alt="product_img">
+        {% endif %}
+    </div>
+    <div class="right-product-card">
+        <div class="product-title">
+            {{item.name}}
+        </div>
+        <div class="product-description">
+            {{ item.description }}
+        </div>
+        <div class="product-footer">
+            <p class="product-price">
+                {{item.price}}$
+            </p>
+            <form method="post">
+                {{ purchaseForm.hidden_tag() }}
+                <input type="hidden" name="item_id" value="{{ item.id }}" />
+                {{ purchaseForm.submit(class='buy-btn') }}
+            </form>
+        </div>
+    </div>
+</div>

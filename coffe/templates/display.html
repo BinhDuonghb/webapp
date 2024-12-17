@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    {% block style_link %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{url_for('static', filename='consider.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='display.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='message.css') }}">
+</head>
+
+<body>
+    <nav style="background-color: rgb(7, 13, 66);">
+        <div class="left-bar">
+            <a href="{{ url_for('homePage')}}"><ion-icon name="home-outline"></ion-icon></a>
+            <a href="{{url_for('marketPage')}}"><ion-icon name="cart-outline"></ion-icon></a>
+        </div>
+        <div class="right-bar">
+            {% if current_user.is_authenticated %}
+
+            <a href="{{ url_for('shopPage')}}"><ion-icon name="file-tray-outline"></ion-icon></a>
+            <a href="{{ url_for('historyPage')}}">History</a>
+            <p class="budget">
+                <ion-icon name="cash-outline"></ion-icon> {{ current_user.budget_display }}$
+                <ion-icon onclick="openPopup_deposit()" name="add-outline"></ion-icon>
+            </p>
+
+            <p>
+                {{ current_user.name }}, Welcome!
+            </p>
+            <a href="#" onclick="openPopup()"><ion-icon name="log-in-outline"></ion-icon></a>
+            {% include "includes/deposit.html" %}
+            {% include "includes/logout_message.html" %}
+            {% else %}
+            <a href="{{ url_for('loginPage')}}">Login</a>
+            <a href="{{ url_for('registerPage')}}">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category,message in messages %}
+    <p class="message {{category}}" id="myMessage_{{loop.index}}">
+        {{ message }}
+        <button type="button" onclick="deleteParagraph('myMessage_{{loop.index}}')">
+            &times;
+        </button>
+    </p>
+    {% endfor%}
+    {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    <script>
+        function deleteParagraph(messageId) {
+            var element = document.getElementById(messageId);
+            element.parentNode.removeChild(element);
+        }
+    </script>
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</html>

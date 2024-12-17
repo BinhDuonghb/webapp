@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: roboto;
+}
+
+body {
+    font-size: 25px;
+    color: white;
+    background: linear-gradient(45deg, black, #1a236e, rgba(31, 31, 206, 0.904), rgb(40, 106, 248));
+    background-size: 300% 300%;
+    animation: color 12s ease-in-out infinite;
+}
+
+@keyframes color {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 15px;
+    box-shadow: 1px 4px 15px rgb(1, 35, 65);
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-bar {
+    display: flex;
+    column-gap: 20px;
+
+    font-size: 18px;
+}
+
+
+.left-bar a:nth-child(1) {
+    font-size: 35px;
+}
+
+.left-bar a:nth-child(2) {
+    font-size: 27px;
+    color: rgb(204, 204, 204);
+}
+
+.left-bar a:nth-child(3) {
+    font-size: 27px;
+    color: rgb(143, 142, 142);
+}
+
+html::-webkit-scrollbar {
+    width: 0.3rem;
+    height: 0.3rem;
+
+}
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 0.3rem;
+    background-color: rgba(13, 13, 202, 0.685);
+}
+
+
+
+.right-bar {
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+}
+
+.right-bar a {
+    font-size: 27px;
+    color: rgb(143, 142, 142);
+}
+
+.budget {
+    color: lawngreen;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.budget ion-icon:nth-child(2) {
+    border-radius: 50%;
+}
+
+.budget ion-icon:nth-child(2):hover {
+    opacity: 75%;
+}
+
+.budget ion-icon:nth-child(2):active {
+    opacity: 50%;
+}
+
+.glass {
+    background: linear-gradient(135deg, hsla(0, 0%, 0%, 0.027), hsla(0, 0%, 0%, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px hsla(0, 0%, 0%, 0.18);
+    box-shadow: 0 8px 32px hsla(0, 0%, 0%, 0.32);
+}

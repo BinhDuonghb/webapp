@@ -1,0 +1,36 @@
+<div class="popup" id="popup-deposit">
+    <div class="popup-title">
+        <h2>Deposit</h2>
+        <button onclick="closePopup_deposit()">
+            &times;
+        </button>
+        <hr>
+    </div>
+    <form method="post">
+        {{ depositForm.hidden_tag() }}
+        <div class="popup-content">
+            <p>How much money do you want</p>
+            <div class="deposit">
+                {{ depositForm.cash() }}
+                <span>$</span>
+            </div>
+            <hr>
+        </div>
+        <div class="popup-button">
+            {{ depositForm.submit(class="main-btn") }}
+            <button type="button" class="side-btn" onclick="closePopup_deposit()">
+                Close
+            </button>
+        </div>
+    </form>
+</div>
+<div class="popup-overlay"></div>
+<script>
+    let popupDeposit = document.getElementById("popup-deposit");
+    function openPopup_deposit() {
+        popupDeposit.classList.add("open-popup");
+    }
+    function closePopup_deposit() {
+        popupDeposit.classList.remove('open-popup');
+    }
+</script>

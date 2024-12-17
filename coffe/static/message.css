@@ -1,0 +1,50 @@
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0 1px;
+    border-bottom: solid 1px #eaecef3b;
+}
+
+.danger {
+    color: white;
+    background: #ca5e58d0 !important;
+}
+
+.safe {
+    color: white;
+    background: #78ca58d0 !important;
+}
+
+.info {
+    color: blue;
+    background: rgba(0, 0, 139, 0.664);
+}
+
+.message button {
+    font-size: 25px;
+    color: white;
+    position: absolute;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+}
+
+.lost {
+    color: red;
+}
+
+.get {
+    color: green;
+}
+
+.infomation {
+    color: blue;
+}
+
+.sale {
+    color: yellow;
+}

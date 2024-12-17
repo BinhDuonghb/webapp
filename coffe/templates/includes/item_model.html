@@ -1,0 +1,57 @@
+<!--purchases-->
+<div class="popup" id="picked_item_{{item.id}}">
+    <div class="popup-title">
+        <h2>Do you sure?</h2>
+        <button onclick="closeBuy('picked_item_{{item.id}}')">
+            &times;
+        </button>
+        <hr>
+    </div>
+    <form method="post">
+        {{ purchaseItem.hidden_tag()}}
+        <div class="popup-content">
+            <p>Do you want to sell this Item with {{ item.price }}$</p>
+            <hr>
+        </div>
+        <div class="popup-button">
+            <input name="item" type="hidden" value="{{item.id}}" />
+            {{ purchaseItem.submit(class="main-btn", value='Yes') }}
+            <button class="side-btn" type="button" onclick="closeBuy('picked_item_{{item.id}}')">
+                No
+            </button>
+        </div>
+    </form>
+</div>
+<div class="popup-overlay"></div>
+<!--info-->
+<div class="popup" id="info_item_{{item.id}}">
+    <div class="popup-title">
+        <h2>{{item.name}}</h2>
+        <button onclick="closeBuy('info_item_{{item.id}}')">
+            &times;
+        </button>
+        <hr>
+    </div>
+    <div class="popup-content">
+        <p>This is a {{item.name}} with the price: {{ item.price }}$</p>
+        <hr>
+    </div>
+    <div class="popup-button">
+        <button class="side-btn" onclick="closeBuy('info_item_{{item.id}}')">
+            close
+        </button>
+    </div>
+    </form>
+</div>
+<div class="popup-overlay"></div>
+<script>
+    function openBuy(popupId) {
+        let item = document.getElementById(popupId);
+        item.classList.add("open-popup");
+    }
+
+    function closeBuy(popupId) {
+        let item = document.getElementById(popupId);
+        item.classList.remove('open-popup');
+    }
+</script>

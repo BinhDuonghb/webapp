@@ -1,0 +1,82 @@
+{% extends "display.html" %}
+
+{% block title %}
+Shop
+{% endblock %}
+{% block style_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='table.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='notation.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='usercard.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='setImage.css') }}">
+{% endblock %}
+
+{% block main %}
+
+<div class="left-main-shop">
+    <section class="table-header">
+        <h1>On Sale</h1>
+    </section>
+    <section class="table-body">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in item_packed %}
+
+                <tr>
+
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>
+                        <a href="{{url_for('buyItemPage',item_id = item.id)}}">
+                            <button class="info">View</button>
+                        </a>
+                        <button class="buy" onclick="openBuy('picked_item_{{item.id}}')">Off Sale</button>
+                    </td>
+                    {% include "includes/item_model.html" %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </section>
+</div>
+<div class="right-main-shop">
+    <div class="card">
+        <div class="icon">
+            {% if image.img %}
+            <img src="data:{{ image.mimetype }};charset=utf-8;base64,{{ image.b64img() }}">
+            {% else %}
+            <img src="{{ url_for('static', filename='image/unknowuser.jpg') }} ">
+            {% endif%}
+        </div>
+        <div class="content">
+            <h1> {{current_user.name}} </h1>
+            <p>Email: {{current_user.email}}</p>
+            <p>
+                budget: <span class="userBudget">{{ current_user.budget_display }}$</span>
+            </p>
+            <div class="options">
+                <button>
+                    <a href="{{url_for('shopPage')}}">
+                        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+                    </a>
+                </button>
+                <button>
+                    <div class="notation">
+                        <a href="{{url_for('marketPage')}}"><ion-icon name="cart-outline"></ion-icon></a>
+                    </div>
+                </button>
+            </div>
+        </div>
+        {% include 'includes/setImage.html' %}
+    </div>
+</div>
+{% endblock %}

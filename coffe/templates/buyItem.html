@@ -1,0 +1,123 @@
+{% extends "display.html" %}
+
+{% block title %}
+Buy
+{% endblock %}
+{% block style_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='sellingForm.css') }}">
+{% endblock %}
+{% block main %}
+<form method="post" class="sellingForm">
+    {{ purchaseForm.hidden_tag() }}
+    <div class="titlePage center"> Payment
+    </div>
+    </div>
+    <hr>
+    <div class="topForm Frow">
+        <div class="itemImage">
+            {% if itemImage and itemImage.img %}
+            <img src="data:{{ itemImage.mimetype }};charset=utf-8;base64,{{ itemImage.b64img() }}" alt="product_img">
+            {% else %}
+            <img src="{{ url_for('static', filename='image/no_image.png') }}" alt="product_img">
+            {% endif %}
+        </div>
+
+        <div class="itemDetail" style="flex: 2;">
+            <div>
+                Item name: <strong>{{ item.name }}</strong>
+            </div>
+            <div>
+                Item Price: <strong style="color: rgb(13, 184, 27);">{{ item.price }}$</strong>
+            </div>
+            <div>
+                Item Description: <strong>{{ item.description }}</strong>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="sellerInfo Frow">
+        <div class="userImage">
+            {% if userImage.img %}
+            <img src="data:{{ userImage.mimetype }};charset=utf-8;base64,{{ userImage.b64img() }}">
+            {% else %}
+            there is no user img
+            {% endif %}
+        </div>
+        <div class="rightSeller Fcolumn">
+            <div class="userT">
+                {{ owner.name }}
+            </div>
+            <div class="userE">
+                {{ owner.email }}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <div class="PaymentTitle">
+            <ion-icon name="reader-outline"></ion-icon>
+            <p> The Detail about payment </p>
+        </div>
+        <div class="paymentSide">
+            <div>
+                The total of item
+            </div>
+            <div>
+                ${{ '%.2f'|format(item.price) }}
+            </div>
+        </div>
+        <div class="paymentSide">
+            <div>
+                The 5% of VAT
+            </div>
+            <div>
+                {% set vat = item.price*5/100 %}
+                ${{ '%.2f'|format(vat) }}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="paymentSide totalPayment">
+        <div>
+            The total amoung of Payment
+        </div>
+        <div>
+            ${{ '%.2f'|format(vat+item.price) }}
+        </div>
+    </div>
+    <div style="text-align: right;">
+        {% if owner.id != current_user.id %}
+        {{ purchaseForm.submit(class="btn active") }}
+        {% else %}
+        {{ purchaseForm.submit(class="btn disable", disabled="disabled") }}
+        {% endif %}
+    </div>
+    <!-- {% if itemImage and itemImage.img %}
+    <img style="width: 100px;" src="data:{{ itemImage.mimetype }};charset=utf-8;base64,{{ itemImage.b64img() }}"
+        alt="product_img">
+    {% else %}
+    <img style="width: 100px;" src="{{ url_for('static', filename='image/no_image.png') }}" alt="product_img">
+    {% endif %}
+
+    {{ item.id }},
+    {{ item.name }},
+    {{ item.price }},
+    {{ item.description }},
+
+    <br>
+    {% if owner %}
+    {{ owner.name }}
+    {{ owner.email }}
+    {% if userImage.img %}
+    <img style="width: 100px;" src="data:{{ userImage.mimetype }};charset=utf-8;base64,{{ userImage.b64img() }}">
+    {% else %}
+    there is no user img
+    {% endif %}
+
+    {% else %}
+    there is no owner
+    {% endif %}
+    <br>
+    {{ purchaseForm.submit() }} -->
+</form>
+{% endblock %}

@@ -1,0 +1,151 @@
+body {
+    height: 100vh;
+}
+
+.sellingForm {
+    display: flex;
+    flex-direction: column;
+    padding: 0 35px;
+    margin: 20px;
+}
+
+.topForm {
+    display: flex;
+}
+
+.Frow {
+    flex-direction: row;
+}
+
+.Fcolumn {
+    flex-direction: column;
+}
+
+.sellerInfo {
+    display: flex;
+    height: 100px;
+    align-items: center;
+}
+
+
+.userT {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.userE {
+    font-size: 20px;
+    color: rgb(185, 185, 185);
+}
+
+.userImage {
+    height: 100px;
+    width: 100px;
+    padding: 15px;
+}
+
+.cricle {
+    border-radius: 50%;
+}
+
+.userImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.itemImage {
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+}
+
+.itemImage img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.itemDetail {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+    gap: 15px;
+}
+
+.center {
+    text-align: center;
+}
+
+.titlePage {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.paymentSide {
+    display: flex;
+    flex-direction: row;
+    color: rgb(177, 175, 175);
+    padding: 0 15px;
+}
+
+.paymentSide div:nth-child(1) {
+    flex: 3;
+}
+
+.paymentSide div:nth-child(2) {
+    flex: 1;
+    text-align: right;
+}
+
+.totalPayment {
+    color: white;
+    font-size: 28px;
+}
+
+.totalPayment div:nth-child(2) {
+    color: rgb(255, 153, 0);
+}
+
+.PaymentTitle {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+    align-items: center;
+    font-weight: bold;
+}
+
+.PaymentTitle ion-icon {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.btn {
+    margin-top: 15px;
+    margin-right: 13px;
+    padding: 10px 8px;
+    font-size: 25px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 75%;
+}
+
+.btn:active {
+    opacity: 50%;
+}
+
+.active {
+    background: linear-gradient(45deg, rgb(40, 106, 248), rgba(31, 31, 206, 0.904), #1a236e, black);
+    color: white;
+}
+
+.disable {
+    color: white;
+    background-color: gainsboro;
+}

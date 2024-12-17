@@ -1,0 +1,29 @@
+<div class="popup" id="popupLogout">
+    <div class="popup-title">
+        <h2>LOGOUT</h2>
+        <button onclick="closePopup()">
+            &times;
+        </button>
+        <hr>
+    </div>
+    <div class="popup-content">
+        <p>Do you really want to logout?</p>
+        <hr>
+    </div>
+    <div class="popup-button">
+        <button class="main-btn" onclick="closePopup()">STAY</button>
+        <button class="side-btn" onclick="closePopup()">
+            <a href="{{ url_for('logoutPage') }}">LOGOUT</a>
+        </button>
+    </div>
+</div>
+<div class="popup-overlay"></div>
+<script>
+    let popupLogout = document.getElementById("popupLogout");
+    function openPopup() {
+        popupLogout.classList.add("open-popup");
+    }
+    function closePopup() {
+        popupLogout.classList.remove('open-popup');
+    }
+</script>

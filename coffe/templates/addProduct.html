@@ -1,0 +1,66 @@
+{% extends "display.html" %}
+
+{% block title %}
+Add Product
+{% endblock %}
+
+{% block style_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='addProduct.css') }}">
+{% endblock %}
+
+{% block main %}
+<h1 class="title">Add Product</h1>
+<form class="addProductForm" method="post" enctype="multipart/form-data">
+    {{ addItemForm.hidden_tag() }}
+    <div class="add-top">
+        <div style="flex:5;" class="left-addProduct">
+            {{ addItemForm.itemName.label(class='textL') }}
+            <div class="formal-input">
+
+                {{ addItemForm.itemName() }}
+                <span>Product Name</span>
+            </div>
+            {{ addItemForm.price.label() }}
+            <div class="formal-input">
+
+                {{ addItemForm.price() }}
+                <span>Product Price ($)</span>
+            </div>
+        </div>
+        <div style="flex:2;" class="right-addProduct">
+            <div class="img-display">
+                <img src="{{url_for('static',filename = 'image/no_image.png')}}" id="profile-pic">
+            </div>
+            <label class="upFileLabel" for="input-file">Set Image</label>
+            <input type="file" style="display: none;" id="input-file" accept="image/*" name='pic'>
+        </div>
+    </div>
+    <div class="add-bottom">
+        {{ addItemForm.description.label() }}
+        <div class="wapper">
+            {{ addItemForm.description() }}
+            <span>Description</span>
+        </div>
+
+        <div>
+            {{ addItemForm.submit(class="save-btn")}}
+        </div>
+    </div>
+</form>
+<script>
+    let profile = document.getElementById('profile-pic');
+    let inputFile = document.getElementById('input-file');
+    inputFile.onchange = function () {
+        profile.src = URL.createObjectURL(inputFile.files[0]);
+    }
+    function openSetImage() {
+        let item = document.getElementById('setImage');
+        item.classList.add("open-set-Image");
+    }
+
+    function closeSetImage() {
+        let item = document.getElementById('setImage');
+        item.classList.remove('open-set-Image');
+    }
+</script>
+{% endblock %}

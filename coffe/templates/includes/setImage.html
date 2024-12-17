@@ -1,0 +1,41 @@
+<div class="setUpImage" id="setImage">
+
+    <button class="exit-button" type="button" onclick="closeSetImage()">
+        &times;
+    </button>
+    <h1>Set up Image </h1>
+    <div class="img-content">
+        {% if image.img %}
+        <img src="data:{{ image.mimetype }};charset=utf-8;base64,{{ image.b64img() }}" id="profile-pic">
+        {% else %}
+        <img src="{{ url_for('static', filename='image/unknowuser.jpg') }} " id="profile-pic">
+        {% endif%}
+    </div>
+    <p>@{{ current_user.name }}</p>
+    <form class="setUpImage-form" method="post" enctype="multipart/form-data">
+        {{ uploadImageForm.hidden_tag() }}
+        <label class="upFileLabel" style="flex: 1;" for="input-file">Set Image</label>
+
+        <input type="file" style="display: none;" id="input-file" accept="image/*" name='pic'>
+        <div>
+            {{ uploadImageForm.submit(class='save-btn')}}
+        </div>
+    </form>
+</div>
+<div class="popup-overlay"></div>
+<script>
+    let profile = document.getElementById('profile-pic');
+    let inputFile = document.getElementById('input-file');
+    inputFile.onchange = function () {
+        profile.src = URL.createObjectURL(inputFile.files[0]);
+    }
+    function openSetImage() {
+        let item = document.getElementById('setImage');
+        item.classList.add("open-set-Image");
+    }
+
+    function closeSetImage() {
+        let item = document.getElementById('setImage');
+        item.classList.remove('open-set-Image');
+    }
+</script>

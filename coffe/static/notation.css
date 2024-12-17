@@ -1,0 +1,15 @@
+.notation {
+    position: relative;
+}
+
+.notation p {
+    position: absolute;
+    padding: 4px 8px;
+    font-size: 15px;
+    top: -10px;
+    right: -5px;
+    color: white;
+    border-radius: 50%;
+    background-color: rgb(0, 183, 255);
+    border: solid 1px white;
+}

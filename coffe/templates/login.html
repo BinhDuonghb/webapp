@@ -1,0 +1,27 @@
+{% extends "display.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block style_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+{% endblock %}
+
+{% block main %}
+<form class="glass" method="post">
+    {{ form.hidden_tag() }}
+    <div class="right-form">
+        <h1> LOGIN </h1>
+        {{ form.userName.label() }}
+        {{ form.userName(placeholder= "User Name") }}
+        {{ form.password.label() }}
+        {{ form.password(placeholder="Password") }}
+        <a href="{{ url_for('registerPage') }}">Create Acount</a>
+        {{ form.submit(class="button") }}
+    </div>
+    <div class="left-form">
+
+    </div>
+</form>
+{% endblock %}

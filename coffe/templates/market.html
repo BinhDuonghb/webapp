@@ -1,0 +1,39 @@
+{% extends "display.html" %}
+
+{% block title %}
+Market
+{% endblock %}
+{% block style_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='market.css') }}">
+{% endblock %}
+
+
+{% block main %}
+<div class="market-header">
+    <h1>Welcome to the Market!</h1>
+    <div class="search-form">
+        <button><ion-icon name="search-outline"></ion-icon></button>
+        <div class="search">
+            <input type="text" required>
+            <span>SEARCH</span>
+        </div>
+    </div>
+</div>
+<div class="background-outline glass">
+    <div class="add-item-btn">
+        <a href="{{url_for('addProductPage')}}"><ion-icon name="add-circle-outline"></ion-icon></a>
+    </div>
+    {% if items %}
+    <div class="grid">
+        {% for item in items %}
+        {% include 'includes/item_card.html' %}
+        {% endfor%}
+    </div>
+    {% else %}
+    <p class="noFound">
+        No products available at this time...
+    </p>
+    {% endif %}
+
+</div>
+{% endblock %}
